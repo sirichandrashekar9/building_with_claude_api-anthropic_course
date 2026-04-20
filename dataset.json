@@ -1,0 +1,17 @@
+[
+  {
+    "task": "Parse an AWS S3 bucket name from a full S3 URI (e.g., 's3://my-bucket-name/path/to/object') and extract only the bucket name",
+    "format": "regex",
+    "solution_criteria": "The regex should correctly extract the bucket name between 's3://' and the first '/', handle URIs with and without trailing paths, and work with valid AWS bucket naming conventions (lowercase letters, numbers, hyphens)"
+  },
+  {
+    "task": "Create a JSON configuration object for an AWS Lambda function that specifies the function name, runtime (Python 3.11), memory size (256 MB), timeout (30 seconds), and an environment variable for a database connection string",
+    "format": "json",
+    "solution_criteria": "The JSON should be valid and properly structured, include all required fields with appropriate data types, follow AWS Lambda configuration conventions, and the environment variables should be nested correctly"
+  },
+  {
+    "task": "Write a Python function that takes an AWS CloudWatch log event and extracts the timestamp and message fields, returning them as a dictionary with 'timestamp' and 'message' keys",
+    "format": "python",
+    "solution_criteria": "The function should handle the standard CloudWatch Logs JSON format, safely extract nested fields, return a dictionary with the specified keys, and handle cases where fields might be missing"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "prompt_inputs": {
+      "height": "180 cm",
+      "weight": "72 kg",
+      "goal": "Marathon training - maximize carbohydrate intake for endurance and sustained energy during a 20-mile training run",
+      "restricitons": "None"
+    },
+    "solution_criteria": [
+      "Meal plan totals 3000+ calories with carbohydrates comprising 60-65% of total calories",
+      "Includes 4-5 meals/snacks distributed throughout the day to maintain sustained energy",
+      "Contains easily digestible, high-carb foods suitable for endurance athletes (e.g., oats, pasta, bananas, rice)",
+      "Meal plan is presented in compact, concise format suitable for quick reference"
+    ],
+    "task_description": "write a compact, concise 1 day meal plan for a single athelete",
+    "scenario": "Testing with a high-endurance athlete (marathoner) requiring 3000+ calories with emphasis on carbohydrate loading and sustained energy"
+  },
+  {
+    "prompt_inputs": {
+      "height": "178",
+      "weight": "85",
+      "goal": "Muscle recovery and strength gains post-training",
+      "restricitons": "None"
+    },
+    "solution_criteria": [
+      "Meal plan is formatted as a single day with clear meal times (breakfast, lunch, dinner, snacks)",
+      "Protein comprises approximately 30-35% of total daily calories with emphasis on high-quality sources",
+      "Includes specific food items and approximate portions that are realistic for a weightlifter",
+      "Compact and concise presentation (under 400 tokens)"
+    ],
+    "task_description": "write a compact, concise 1 day meal plan for a single athelete",
+    "scenario": "Testing with a strength/power athlete (weightlifter) requiring protein-focused nutrition with specific macronutrient ratios for muscle recovery"
+  },
+  {
+    "prompt_inputs": {
+      "height": "183 cm",
+      "weight": "78 kg",
+      "goal": "Optimize performance and recovery for match day with sustained energy and quick carbohydrate availability",
+      "restricitons": "None"
+    },
+    "solution_criteria": [
+      "Meal plan covers all three meals plus pre/during match nutrition timing",
+      "Includes adequate carbohydrates (6-10g per kg body weight) for aerobic capacity and match intensity",
+      "Incorporates lean protein sources for muscle recovery",
+      "Specifies timing and portions appropriate for a professional soccer match day"
+    ],
+    "task_description": "write a compact, concise 1 day meal plan for a single athelete",
+    "scenario": "Testing with a sport-specific scenario (professional soccer player) needing balanced nutrition that supports both aerobic capacity and quick energy availability during match day"
+  }
+]

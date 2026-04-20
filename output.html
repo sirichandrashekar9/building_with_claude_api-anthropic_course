@@ -1,0 +1,221 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Prompt Evaluation Report</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .header {
+                background-color: #f0f0f0;
+                padding: 20px;
+                border-radius: 5px;
+                margin-bottom: 20px;
+            }
+            .summary-stats {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+            .stat-box {
+                background-color: #fff;
+                border-radius: 5px;
+                padding: 15px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                flex-basis: 30%;
+                min-width: 200px;
+            }
+            .stat-value {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 5px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+            th {
+                background-color: #4a4a4a;
+                color: white;
+                text-align: left;
+                padding: 12px;
+            }
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                vertical-align: top;
+            }
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+            .output-cell {
+                white-space: pre-wrap;
+            }
+            .score {
+                font-weight: bold;
+                padding: 5px 10px;
+                border-radius: 3px;
+                display: inline-block;
+            }
+            .score-high {
+                background-color: #c8e6c9;
+                color: #2e7d32;
+            }
+            .score-medium {
+                background-color: #fff9c4;
+                color: #f57f17;
+            }
+            .score-low {
+                background-color: #ffcdd2;
+                color: #c62828;
+            }
+            .output {
+                overflow: auto;
+                white-space: pre-wrap;
+            }
+
+            .output pre {
+                background-color: #f5f5f5;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 10px;
+                margin: 0;
+                font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+                font-size: 14px;
+                line-height: 1.4;
+                color: #333;
+                box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+                overflow-x: auto;
+                white-space: pre-wrap; 
+                word-wrap: break-word; 
+            }
+
+            td {
+                width: 20%;
+            }
+            .score-col {
+                width: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Prompt Evaluation Report</h1>
+            <div class="summary-stats">
+                <div class="stat-box">
+                    <div>Total Test Cases</div>
+                    <div class="stat-value">3</div>
+                </div>
+                <div class="stat-box">
+                    <div>Average Score</div>
+                    <div class="stat-value">6.7 / 10</div>
+                </div>
+                <div class="stat-box">
+                    <div>Pass Rate (≥7)</div>
+                    <div class="stat-value">66.7%</div>
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Scenario</th>
+                    <th>Prompt Inputs</th>
+                    <th>Solution Criteria</th>
+                    <th>Output</th>
+                    <th>Score</th>
+                    <th>Reasoning</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            <tr>
+                <td>Testing with interdisciplinary content mixing multiple fields (e.g., environmental science + economics) to verify the prompt correctly identifies and separates distinct topics rather than conflating related concepts</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent studies demonstrate the complex interplay between wetland ecosystem restoration and carbon credit markets in coastal regions. Wetlands sequester atmospheric CO2 through peat accumulation at rates of 1-2 tons per hectare annually, making them critical for climate mitigation strategies. Simultaneously, the emergence of blue carbon markets has created economic incentives for wetland conservation, with credits trading at $15-20 per ton of CO2 equivalent. However, restoration projects face challenges including land-use competition with agricultural expansion, where farmers prioritize short-term crop yields over long-term carbon sequestration benefits. Policy frameworks must therefore balance ecological restoration objectives with economic viability for local stakeholders, requiring integrated approaches that address both environmental science and market-based conservation mechanisms.</td>
+                <td class="criteria">• Correctly identifies and separates distinct topics from different disciplines (e.g., wetland ecology, carbon sequestration, carbon markets, agricultural economics, policy) rather than merging them into single broad topics<br>• Captures all major topic areas mentioned across the environmental science and economics domains<br>• Outputs results as a JSON array of strings</td>
+                <td class="output"><pre>
+[
+  "wetland ecosystem restoration",
+  "carbon credit markets",
+  "coastal regions",
+  "CO2 sequestration",
+  "peat accumulation",
+  "climate mitigation strategies",
+  "blue carbon markets",
+  "wetland conservation",
+  "land-use competition",
+  "agricultural expansion",
+  "carbon sequestration benefits",
+  "policy frameworks",
+  "ecological restoration objectives",
+  "market-based conservation mechanisms",
+  "environmental science"
+]
+</pre></td>
+                <td class="score-col"><span class="score score-high">9</span></td>
+                <td class="reasoning">The solution fully satisfies all mandatory requirements: it is a valid JSON array of strings containing only topics without commentary. Regarding secondary criteria, it demonstrates strong interdisciplinary separation (wetland ecology, carbon markets, agricultural economics, policy frameworks, environmental science) and captures all major topic areas from the passage. The 15 topics are well-distributed across domains. The only minor issue is slight redundancy between 'CO2 sequestration' and 'carbon sequestration benefits,' which represent the same core concept expressed differently. This is a very minor deficiency that doesn't significantly impact the overall quality of the extraction.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a passage containing implicit or subtle topics that require contextual understanding (e.g., a climate science passage discussing policy implications without explicitly naming 'policy' or 'legislation') to assess whether extraction is limited to explicit mentions or includes inferred concepts</td>
+                <td class="prompt-inputs"><strong>content:</strong> Recent advances in carbon capture technology have demonstrated significant potential for mitigating atmospheric CO2 concentrations. Direct air capture systems utilizing solid sorbent materials can extract CO2 at costs approaching $100-150 per ton, though this remains higher than point-source capture from industrial facilities. The captured carbon presents opportunities for utilization in enhanced oil recovery, building materials, and chemical synthesis. However, the scalability of these technologies depends critically on the availability of renewable energy sources and supportive regulatory frameworks that incentivize deployment across multiple economic sectors and geographies.</td>
+                <td class="criteria">• Extracts explicit topics (e.g., 'carbon capture technology', 'direct air capture', 'CO2')<br>• Identifies inferred or implicit topics requiring contextual understanding (e.g., 'policy/regulation', 'economics/cost', 'energy sustainability')<br>• Returns results as a JSON array of strings<br>• Distinguishes between surface-level mentions and deeper conceptual themes embedded in the passage</td>
+                <td class="output"><pre>
+[
+  "carbon capture technology",
+  "atmospheric CO2 concentrations",
+  "direct air capture systems",
+  "solid sorbent materials",
+  "point-source capture",
+  "industrial facilities",
+  "enhanced oil recovery",
+  "building materials",
+  "chemical synthesis",
+  "scalability",
+  "renewable energy sources",
+  "regulatory frameworks",
+  "economic sectors"
+]
+</pre></td>
+                <td class="score-col"><span class="score score-medium">7</span></td>
+                <td class="reasoning">The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It successfully extracts most explicit topics and several implicit ones. However, it falls short on the secondary criteria of identifying deeper conceptual themes. The passage emphasizes cost-effectiveness, regulatory incentives, and energy sustainability as critical barriers to deployment, but these are not explicitly extracted as distinct topics. The inclusion of 'economic sectors' is also imprecise. While the solution is competent and functional, it misses opportunities to capture important inferred themes that demonstrate contextual understanding of the passage's core arguments.</td>
+            </tr>
+        
+            <tr>
+                <td>Testing with a highly focused, single-topic passage with repetitive terminology to verify the prompt deduplicates topics and returns a clean list without redundant entries</td>
+                <td class="prompt-inputs"><strong>content:</strong> This study examines the neuroplasticity of the human brain through the lens of synaptic plasticity and long-term potentiation. Synaptic plasticity mechanisms, particularly those involving synaptic plasticity at the molecular level, have been extensively documented in neuroplasticity research. Our findings demonstrate that long-term potentiation facilitates neuroplasticity through enhanced synaptic transmission, with synaptic plasticity serving as the fundamental basis for learning and memory formation. The role of synaptic plasticity in neuroplasticity cannot be overstated, as repeated stimulation strengthens synaptic connections and promotes neuroplasticity across multiple brain regions. These results underscore how synaptic plasticity and long-term potentiation work synergistically to enable adaptive neuroplasticity in response to environmental demands.</td>
+                <td class="criteria">• Output is a valid JSON array of strings<br>• Contains exactly three unique topics with no duplicate entries<br>• Topics are: synaptic plasticity, long-term potentiation, and neuroplasticity</td>
+                <td class="output"><pre>
+[
+  "neuroplasticity",
+  "synaptic plasticity",
+  "long-term potentiation",
+  "synaptic transmission",
+  "learning and memory formation",
+  "molecular level mechanisms",
+  "brain regions",
+  "repeated stimulation",
+  "synaptic connections",
+  "adaptive neuroplasticity",
+  "environmental demands"
+]
+</pre></td>
+                <td class="score-col"><span class="score score-low">4</span></td>
+                <td class="reasoning">The solution violates a critical secondary criterion by including 11 topics instead of exactly 3. While the output is valid JSON and contains the three required core topics, the criteria explicitly state the solution should contain 'exactly three unique topics' - not 'at least three' or 'three main topics among others.' The solution extracts comprehensive topics from the passage but fails to meet the specific constraint of limiting output to only the three specified topics: neuroplasticity, synaptic plasticity, and long-term potentiation.</td>
+            </tr>
+        
+            </tbody>
+        </table>
+    </body>
+    </html>
+    

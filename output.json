@@ -1,0 +1,54 @@
+[
+  {
+    "output": "\n[\n  \"wetland ecosystem restoration\",\n  \"carbon credit markets\",\n  \"coastal regions\",\n  \"CO2 sequestration\",\n  \"peat accumulation\",\n  \"climate mitigation strategies\",\n  \"blue carbon markets\",\n  \"wetland conservation\",\n  \"land-use competition\",\n  \"agricultural expansion\",\n  \"carbon sequestration benefits\",\n  \"policy frameworks\",\n  \"ecological restoration objectives\",\n  \"market-based conservation mechanisms\",\n  \"environmental science\"\n]\n",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "Recent studies demonstrate the complex interplay between wetland ecosystem restoration and carbon credit markets in coastal regions. Wetlands sequester atmospheric CO2 through peat accumulation at rates of 1-2 tons per hectare annually, making them critical for climate mitigation strategies. Simultaneously, the emergence of blue carbon markets has created economic incentives for wetland conservation, with credits trading at $15-20 per ton of CO2 equivalent. However, restoration projects face challenges including land-use competition with agricultural expansion, where farmers prioritize short-term crop yields over long-term carbon sequestration benefits. Policy frameworks must therefore balance ecological restoration objectives with economic viability for local stakeholders, requiring integrated approaches that address both environmental science and market-based conservation mechanisms."
+      },
+      "solution_criteria": [
+        "Correctly identifies and separates distinct topics from different disciplines (e.g., wetland ecology, carbon sequestration, carbon markets, agricultural economics, policy) rather than merging them into single broad topics",
+        "Captures all major topic areas mentioned across the environmental science and economics domains",
+        "Outputs results as a JSON array of strings"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with interdisciplinary content mixing multiple fields (e.g., environmental science + economics) to verify the prompt correctly identifies and separates distinct topics rather than conflating related concepts"
+    },
+    "score": 9,
+    "reasoning": "The solution fully satisfies all mandatory requirements: it is a valid JSON array of strings containing only topics without commentary. Regarding secondary criteria, it demonstrates strong interdisciplinary separation (wetland ecology, carbon markets, agricultural economics, policy frameworks, environmental science) and captures all major topic areas from the passage. The 15 topics are well-distributed across domains. The only minor issue is slight redundancy between 'CO2 sequestration' and 'carbon sequestration benefits,' which represent the same core concept expressed differently. This is a very minor deficiency that doesn't significantly impact the overall quality of the extraction."
+  },
+  {
+    "output": "\n[\n  \"carbon capture technology\",\n  \"atmospheric CO2 concentrations\",\n  \"direct air capture systems\",\n  \"solid sorbent materials\",\n  \"point-source capture\",\n  \"industrial facilities\",\n  \"enhanced oil recovery\",\n  \"building materials\",\n  \"chemical synthesis\",\n  \"scalability\",\n  \"renewable energy sources\",\n  \"regulatory frameworks\",\n  \"economic sectors\"\n]\n",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "Recent advances in carbon capture technology have demonstrated significant potential for mitigating atmospheric CO2 concentrations. Direct air capture systems utilizing solid sorbent materials can extract CO2 at costs approaching $100-150 per ton, though this remains higher than point-source capture from industrial facilities. The captured carbon presents opportunities for utilization in enhanced oil recovery, building materials, and chemical synthesis. However, the scalability of these technologies depends critically on the availability of renewable energy sources and supportive regulatory frameworks that incentivize deployment across multiple economic sectors and geographies."
+      },
+      "solution_criteria": [
+        "Extracts explicit topics (e.g., 'carbon capture technology', 'direct air capture', 'CO2')",
+        "Identifies inferred or implicit topics requiring contextual understanding (e.g., 'policy/regulation', 'economics/cost', 'energy sustainability')",
+        "Returns results as a JSON array of strings",
+        "Distinguishes between surface-level mentions and deeper conceptual themes embedded in the passage"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a passage containing implicit or subtle topics that require contextual understanding (e.g., a climate science passage discussing policy implications without explicitly naming 'policy' or 'legislation') to assess whether extraction is limited to explicit mentions or includes inferred concepts"
+    },
+    "score": 7,
+    "reasoning": "The solution meets all mandatory requirements: it is a valid JSON array of strings containing topics from the article with no extra commentary. It successfully extracts most explicit topics and several implicit ones. However, it falls short on the secondary criteria of identifying deeper conceptual themes. The passage emphasizes cost-effectiveness, regulatory incentives, and energy sustainability as critical barriers to deployment, but these are not explicitly extracted as distinct topics. The inclusion of 'economic sectors' is also imprecise. While the solution is competent and functional, it misses opportunities to capture important inferred themes that demonstrate contextual understanding of the passage's core arguments."
+  },
+  {
+    "output": "\n[\n  \"neuroplasticity\",\n  \"synaptic plasticity\",\n  \"long-term potentiation\",\n  \"synaptic transmission\",\n  \"learning and memory formation\",\n  \"molecular level mechanisms\",\n  \"brain regions\",\n  \"repeated stimulation\",\n  \"synaptic connections\",\n  \"adaptive neuroplasticity\",\n  \"environmental demands\"\n]\n",
+    "test_case": {
+      "prompt_inputs": {
+        "content": "This study examines the neuroplasticity of the human brain through the lens of synaptic plasticity and long-term potentiation. Synaptic plasticity mechanisms, particularly those involving synaptic plasticity at the molecular level, have been extensively documented in neuroplasticity research. Our findings demonstrate that long-term potentiation facilitates neuroplasticity through enhanced synaptic transmission, with synaptic plasticity serving as the fundamental basis for learning and memory formation. The role of synaptic plasticity in neuroplasticity cannot be overstated, as repeated stimulation strengthens synaptic connections and promotes neuroplasticity across multiple brain regions. These results underscore how synaptic plasticity and long-term potentiation work synergistically to enable adaptive neuroplasticity in response to environmental demands."
+      },
+      "solution_criteria": [
+        "Output is a valid JSON array of strings",
+        "Contains exactly three unique topics with no duplicate entries",
+        "Topics are: synaptic plasticity, long-term potentiation, and neuroplasticity"
+      ],
+      "task_description": "Extract topics out of a passage of text from a scholarly article into a JSON array of strings",
+      "scenario": "Testing with a highly focused, single-topic passage with repetitive terminology to verify the prompt deduplicates topics and returns a clean list without redundant entries"
+    },
+    "score": 4,
+    "reasoning": "The solution violates a critical secondary criterion by including 11 topics instead of exactly 3. While the output is valid JSON and contains the three required core topics, the criteria explicitly state the solution should contain 'exactly three unique topics' - not 'at least three' or 'three main topics among others.' The solution extracts comprehensive topics from the passage but fails to meet the specific constraint of limiting output to only the three specified topics: neuroplasticity, synaptic plasticity, and long-term potentiation."
+  }
+]
